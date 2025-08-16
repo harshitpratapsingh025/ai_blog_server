@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Virtual environments
+venv/
+.env/
+.venv/
+ENV/
+env/
+
+# Environment variables
+*.env
+.env.*
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Byte-compiled
+*.so
+
+# Alembic migration cache
+alembic/__pycache__/
+alembic/versions/__pycache__/
+alembic/versions/*.pyc
+
+# Logs
+*.log
+logs/
+*.pid
+*.gz
+
+# Database
+*.db
+*.sqlite3
+
+# Docker
+*.pid
+*.seed
+.dockerignore
+docker-compose.override.yml
+
+# Coverage / Testing
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Node (if frontend in same repo)
+node_modules/
+dist/
+build/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Others
+*.~undo-tree~
+*.tmp
