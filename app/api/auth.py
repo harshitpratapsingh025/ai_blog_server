@@ -33,13 +33,12 @@ async def register(user_in: UserCreate):
             "name": f"{new_user.first_name} {new_user.last_name}",
             "username": new_user.username,
             "email": new_user.email,
-            "createdAt": new_user.created_at.isoformat() if new_user.created_at else None
         }
         session.add(new_user)
         await session.commit()
         await session.refresh(new_user)
         access_token = create_access_token(data={**user}, expires_delta=timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES))
-        return {"access_token": access_token, "token_type": "bearer"}
+        return {"access_token": access_token, "token_type": "bearer", "user": user}
     except Exception as e:
         print(f"Error during registration: {e}")  # For debugging purposes
         raise HTTPException(status_code=500, detail="Something went wrong")
@@ -56,14 +55,13 @@ async def login(user_in: UserLogin):
                     "name": f"{user.first_name} {user.last_name}",
                     "username": user.username,
                     "email": user.email,
-                    "createdAt": user.created_at.isoformat()
                 }
         if not user:
             raise HTTPException(status_code=400, detail="Invalid credentials")
         if not verify_password(user_in.password, user.password_hash):
             raise HTTPException(status_code=400, detail="Invalid credentials")
         access_token = create_access_token(data={**auth_user}, expires_delta=timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES))
-        return {"access_token": access_token, "token_type": "bearer"}
+        return {"access_token": access_token, "token_type": "bearer", "user": auth_user}
     except Exception as e:
         print(f"Error during login: {e}")  # For debugging purposes
         raise HTTPException(status_code=500, detail="Something went wrong")
