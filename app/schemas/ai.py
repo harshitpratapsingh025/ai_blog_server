@@ -15,4 +15,7 @@ class AIReviewResponse(BaseModel):
 class TopicSuggestion(BaseModel):
     title: str
     description: str
-
+    
+class PostSummary(BaseModel):
+    summary: str
+    reading_time: int

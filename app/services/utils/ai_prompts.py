@@ -18,3 +18,12 @@ topic_prompt = ChatPromptTemplate.from_messages([
      "'title' (string) and 'description' (string)."),
     ("user", "Past titles:\n{titles}\n\n{format_instructions}")
 ])
+
+post_summary_prompt = ChatPromptTemplate.from_messages([
+    ("system", 
+     "You are a helpful assistant. "
+     "Summarize the blog post and provide the estimated reading time. "
+     "The response must be a valid JSON object with keys: "
+     "'summary' (string) and 'reading_time' (int)."),
+    ("user", "Blog post content:\n{content}\n\n{format_instructions}")
+])

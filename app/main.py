@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from app.db.session import async_engine
+from fastapi.staticfiles import StaticFiles
 from app.api import users, posts, ai, auth, mock
 
 
@@ -26,9 +27,11 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,  # Only allow these domains
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
+
+app.mount("/public", StaticFiles(directory="app/public"), name="public")
 
 # Include routers
 app.include_router(auth.router, prefix="/api/auth", tags=["auth"])

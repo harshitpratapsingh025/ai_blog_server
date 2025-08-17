@@ -16,6 +16,8 @@ def build_post_with_author(post: Post, author: User) -> dict:
         "likesCount": post.likes_count,
         "commentsCount": post.comments_count,
         "readingTime": post.reading_time,
+        "imageUrl": post.image_url,
+        "audioUrl": post.audio_url,
         "createdAt": post.created_at,
         "updatedAt": post.updated_at,
         "author": {

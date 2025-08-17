@@ -21,6 +21,8 @@ class Post(Base):
     likes_count = sa.Column(sa.Integer, nullable=False, server_default=sa.text("0"))
     comments_count = sa.Column(sa.Integer, nullable=False, server_default=sa.text("0"))
     reading_time = sa.Column(sa.Integer, nullable=False, server_default=sa.text("5"))
+    image_url = sa.Column(sa.Text, nullable=True)
+    audio_url = sa.Column(sa.Text, nullable=True)
     created_at = sa.Column(sa.DateTime, server_default=sa.func.now())
     updated_at = sa.Column(
         sa.DateTime, server_default=sa.func.now(), onupdate=sa.func.now()

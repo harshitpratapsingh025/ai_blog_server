@@ -74,3 +74,4 @@ build/
 # Others
 *.~undo-tree~
 *.tmp
+app/public/audios/*

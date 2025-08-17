@@ -25,5 +25,4 @@ async def topics(past_titles: str = ""):
     # past_titles is CSV; you can send array via query params from frontend
     titles = [t.strip() for t in past_titles.split(",") if t.strip()]
     res = await suggest_topics(titles)
-    print(res)
     return res

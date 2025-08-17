@@ -26,6 +26,8 @@ class PostRead(BaseModel):
     is_published: bool
     likes_count: int = 0
     comments_count: int = 0
+    image_url: Optional[str] = None
+    audio_url: Optional[str] = None
     reading_time: int = 0
     created_at: datetime
     updated_at: datetime
@@ -48,6 +50,8 @@ class PostWithAuthor(BaseModel):
     readingTime: int
     createdAt: datetime
     updatedAt: datetime
+    imageUrl: Optional[str] = None
+    audioUrl: Optional[str] = None
     author: UserRead
 
     class Config:
